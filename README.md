@@ -48,3 +48,4 @@ If you acquire 36 physical photos taken on a turntable (instead of a 3D model), 
 
 The system is highly optimized and handles preloading automatically. The UI requires zero structural changes to support these future enhancements.
 # azaro
+# Azaro
