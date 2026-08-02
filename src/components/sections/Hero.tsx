@@ -58,7 +58,7 @@ export default function Hero({
                       fontWeight: 800,
                     }}
                   >
-                    Evaluate Every
+                    EVALUATE EVERY
                   </text>
                 </mask>
               </defs>
@@ -78,7 +78,7 @@ export default function Hero({
                   fontWeight: 800,
                 }}
               >
-                Evaluate Every
+                EVALUATE EVERY
               </text>
             </svg>
           </span>
