@@ -24,7 +24,7 @@ export default function Hero({
       {/* Centered Premium Content Overlay */}
       <div className={styles.heroContentBlock}>
         <h1 className={styles.heroHeadline}>
-          <span className={`${styles.headingLine1} ${styles.desktopOnly}`}>
+          <span className={styles.headingLine1}>
             <svg width="100%" height="1.2em" style={{ overflow: "visible" }}>
               <defs>
                 <linearGradient
@@ -79,96 +79,6 @@ export default function Hero({
                 }}
               >
                 Evaluate Every
-              </text>
-            </svg>
-          </span>
-          <span className={`${styles.headingLine1} ${styles.mobileOnly}`}>
-            <svg width="100%" height="2.4em" style={{ overflow: "visible" }}>
-              <defs>
-                <linearGradient
-                  id="outlineGradientMobile"
-                  x1="0%"
-                  y1="0%"
-                  x2="0%"
-                  y2="100%"
-                >
-                  <stop offset="0%" stopColor="#D1001F" />
-                  <stop offset="50%" stopColor="#EE6B6E" />
-                  <stop offset="100%" stopColor="#F6C5CC" />
-                </linearGradient>
-                <mask id="textOuterMaskMobile">
-                  <rect
-                    x="-10%"
-                    y="-10%"
-                    width="120%"
-                    height="120%"
-                    fill="white"
-                  />
-                  <text
-                    x="50%"
-                    y="25%"
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fill="black"
-                    style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      letterSpacing: "2px",
-                      fontWeight: 800,
-                    }}
-                  >
-                    Evaluate
-                  </text>
-                  <text
-                    x="50%"
-                    y="75%"
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fill="black"
-                    style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      letterSpacing: "2px",
-                      fontWeight: 800,
-                    }}
-                  >
-                    Every
-                  </text>
-                </mask>
-              </defs>
-              <text
-                x="50%"
-                y="25%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="none"
-                stroke="url(#outlineGradientMobile)"
-                strokeWidth="4"
-                strokeLinejoin="round"
-                mask="url(#textOuterMaskMobile)"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  letterSpacing: "2px",
-                  fontWeight: 800,
-                }}
-              >
-                Evaluate
-              </text>
-              <text
-                x="50%"
-                y="75%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="none"
-                stroke="url(#outlineGradientMobile)"
-                strokeWidth="4"
-                strokeLinejoin="round"
-                mask="url(#textOuterMaskMobile)"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  letterSpacing: "2px",
-                  fontWeight: 800,
-                }}
-              >
-                Every
               </text>
             </svg>
           </span>

@@ -491,11 +491,12 @@
   }
 
   .headingLine1 {
-    font-size: clamp(32px, 9vw, 45px);
+    font-size: clamp(18px, 5.5vw, 32px);
+    white-space: nowrap;
   }
 
   .headingLine2 {
-    font-size: clamp(32px, 9vw, 45px);
+    font-size: clamp(32px, 10vw, 55px);
     margin-top: 5px;
   }
 
@@ -506,5 +507,9 @@
 
   .heroDescription {
     margin-bottom: 10px;
+    max-width: 100%;
+    padding: 0 5px;
+    font-size: clamp(10px, 3.1vw, 16px);
+    white-space: nowrap;
   }
 }
