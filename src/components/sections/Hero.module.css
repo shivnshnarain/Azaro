@@ -421,3 +421,73 @@
   --base-scale: 1;
   --flip-x: -1;
 }
+
+/* NEW DESKTOP AND MOBILE ONLY CLASSES */
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .desktopOnly {
+    display: none !important;
+  }
+  .mobileOnly {
+    display: block !important;
+  }
+  
+  .hero {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .heroContentBlock {
+    position: relative;
+    top: 0;
+    order: 2;
+    padding: 40px 20px 60px;
+    background: var(--color-white, #ffffff);
+    margin-top: 0;
+  }
+
+  /* Remove white film overlay on mobile */
+  .heroContentBlock::before {
+    display: none;
+  }
+
+  .heroWrapper {
+    order: 1;
+    height: 400px;
+    min-height: 350px;
+  }
+
+  .rightPlaceholder {
+    height: 100%;
+    margin: 0;
+  }
+
+  .heroHeadline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .headingLine1 {
+    font-size: clamp(32px, 9vw, 45px);
+  }
+
+  .headingLine2 {
+    font-size: clamp(32px, 9vw, 45px);
+    margin-top: 5px;
+  }
+
+  .heroDivider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .heroDescription {
+    margin-bottom: 10px;
+  }
+}
