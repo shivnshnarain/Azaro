@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .swatch-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .swatch {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-image: url('images/plat102-1.png');
+    background-size: 2500%;
+  }
+</style>
+</head>
+<body>
+  <div class="swatch-container" id="container">
+  </div>
+  <script>
+    const container = document.getElementById('container');
+    const positions = [];
+    for (let x = 30; x <= 70; x += 5) {
+      for (let y = 30; y <= 70; y += 5) {
+        positions.push(`${x}% ${y}%`);
+      }
+    }
+    
+    positions.forEach(pos => {
+      const div = document.createElement('div');
+      div.style.display = 'flex';
+      div.style.flexDirection = 'column';
+      div.style.alignItems = 'center';
+      
+      const swatch = document.createElement('div');
+      swatch.className = 'swatch';
+      swatch.style.backgroundPosition = pos;
+      
+      const label = document.createElement('span');
+      label.textContent = pos;
+      label.style.fontSize = '12px';
+      
+      div.appendChild(swatch);
+      div.appendChild(label);
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

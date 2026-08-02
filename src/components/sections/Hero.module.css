@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+
+.hero {
+  height: 100vh;
+  min-height: 800px;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.heroWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+/* Left Content Section */
+.leftSection {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  padding-top: calc(40px + 75px);
+  position: relative;
+  z-index: 10;
+}
+
+/* Premium Centered Overlay Content */
+.heroContentBlock {
+  position: absolute;
+  top: max(105px, 10vh); /* Moved downward by ~25px */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.heroContentBlock::before {
+  content: "";
+  position: absolute;
+  top: calc(
+    -1 * max(105px, 10vh)
+  ); /* Extend up to exactly the top of the section (under navbar) */
+  left: 0;
+  right: 0;
+  bottom: -40px; /* End exactly below the CTA buttons */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+.heroHeadline {
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+.headingLine1 {
+  display: block;
+  width: 100%;
+  font-family: "Montserrat", "Proxima Nova", "Gilroy", "Inter", sans-serif;
+  font-weight: 800; /* Bold, modern, geometric */
+  font-size: clamp(
+    45px,
+    7vw,
+    105px
+  ); /* Reduced by ~8% and lowered min to prevent mobile clipping */
+  line-height: 1.1; /* Matches SVG height */
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  /* Stroke and Fill are now handled natively inside the SVG for perfect vector anti-aliasing */
+}
+
+.headingLine2 {
+  display: block;
+  font-family: "Montserrat", "Proxima Nova", "Gilroy", "Inter", sans-serif;
+  font-weight: 800;
+  font-size: clamp(45px, 5.5vw, 75px);
+  line-height: 1;
+  letter-spacing: 0;
+  color: #d1001f;
+  text-transform: uppercase;
+  margin-top: -25px; /* Moves 'Workspace' upward by another 10px */
+}
+
+.heroDivider {
+  width: 40px;
+  height: 2px;
+  background-color: #d1001f;
+  border-radius: 0;
+  margin-top: 26px; /* Equal visual spacing above */
+  margin-bottom: 26px; /* Equal visual spacing below */
+}
+
+.heroDescription {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(16px, 1.5vw, 18px); /* Reduced to 16-18px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: #111111; /* Pure black */
+  text-align: center;
+  max-width: 540px; /* Reduced max-width */
+  margin: 0;
+  padding: 0 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); /* Soft dark shadow */
+}
+
+.heroButtons {
+  display: flex;
+  gap: 18px; /* Tighter button gap */
+  margin-top: 24px; /* Tighter margin from description */
+  pointer-events: auto;
+}
+
+.primaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px; /* Matches spec 15-16px */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-primary-red);
+  height: 44px; /* Reduced by ~8-10% */
+  padding: 0 28px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(209, 0, 31, 0.25);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.primaryBtn:hover {
+  background-color: var(--color-hover-red);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(209, 0, 31, 0.35);
+}
+
+.secondaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary-red);
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-primary-red);
+  height: 44px; /* Reduced by ~8-10% */
+  padding: 0 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.secondaryBtn:hover {
+  background-color: rgba(222, 10, 38, 0.05);
+  color: var(--color-hover-red);
+  border-color: var(--color-hover-red);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(222, 10, 38, 0.1);
+}
+
+.btnIcon {
+  transition: transform var(--transition-fast);
+}
+
+.primaryBtn:hover .btnIcon {
+  transform: translateX(4px);
+}
+
+.secondaryBtn:hover .btnIcon {
+  transform: translateY(2px);
+}
+
+/* Full Width Image Gallery */
+.rightPlaceholder {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+  /* Replaces the imageDivider elements */
+}
+
+.imageWrapper {
+  flex: 1 1 20%;
+  width: 20%;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  cursor: pointer;
+  transition: box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+}
+
+.imageWrapper:hover {
+  z-index: 10; /* Bring to front for outer glow */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Clean neutral outer shadow */
+}
+
+.heroImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  /* Support composite transforms via CSS variables */
+  --base-y: 0%;
+  --hover-y: 0px;
+  --base-scale: 1;
+  --hover-scale: 1;
+  --flip-x: 1;
+  transform: translateY(calc(var(--base-y) + var(--hover-y)))
+    scaleX(calc(var(--flip-x) * var(--base-scale) * var(--hover-scale)))
+    scaleY(calc(var(--base-scale) * var(--hover-scale)));
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 400ms ease;
+  will-change: transform, filter;
+}
+
+.imageWrapper:hover .heroImage {
+  --hover-y: -6px;
+  --hover-scale: 1.08;
+}
+
+/* Layer 1: Premium Frosted White Glass Film & Inner Glow */
+.glassEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Premium frosted white glass with 12-18% opacity */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.3); /* Subtle white inner glow */
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.imageWrapper:hover .glassEffect {
+  opacity: 1;
+}
+
+/* Layer 2: Animated Dark Glossy Side Lines */
+.glassEffect::before,
+.glassEffect::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  height: 100%;
+  /* Dark Graphite / Charcoal glossy lines */
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(58, 58, 58, 0.8),
+    transparent
+  );
+  filter: blur(1px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  will-change: transform, opacity;
+}
+
+/* Line 1 */
+.glassEffect::before {
+  left: 25%;
+  width: 2px;
+}
+
+/* Line 2 */
+.glassEffect::after {
+  left: 65%;
+  width: 3px;
+}
+
+.imageWrapper:hover .glassEffect::before {
+  animation: glassLightStreak 3s linear infinite;
+}
+
+.imageWrapper:hover .glassEffect::after {
+  animation: glassLightStreak 4s linear infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes glassLightStreak {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  85% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heroWrapper {
+    flex-direction: column;
+  }
+  .leftSection {
+    width: 100%;
+    padding: 20px;
+  }
+  .rightPlaceholder {
+    width: 100%;
+    height: 400px;
+    margin: 0;
+  }
+  .leftCard {
+    max-width: 100%;
+    margin: 0;
+  }
+  .divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .leftCard {
+    padding: 30px 20px;
+  }
+  .rightPlaceholder {
+    height: 300px;
+  }
+}
+
+.imageWrapper:not(:last-child) {
+  border-right: 6px solid #ffffff;
+}
+
+/* Backgrounds for seamless edges */
+.rightPlaceholder > .imageWrapper:nth-child(1) {
+  background-color: rgb(224, 221, 204);
+}
+.rightPlaceholder > .imageWrapper:nth-child(2) {
+  background-color: rgb(212, 216, 225);
+}
+.rightPlaceholder > .imageWrapper:nth-child(3) {
+  background-color: rgb(225, 204, 187);
+}
+.rightPlaceholder > .imageWrapper:nth-child(4) {
+  background-color: rgb(200, 195, 189);
+}
+.rightPlaceholder > .imageWrapper:nth-child(5) {
+  background-color: rgb(219, 194, 164);
+}
+
+/* NEW IMAGE ADJUSTMENTS */
+.rightPlaceholder > .imageWrapper:nth-child(1) .heroImage {
+  object-position: center;
+  --base-y: 7.9%;
+  --base-scale: 1;
+  --flip-x: 1;
+}
+.rightPlaceholder > .imageWrapper:nth-child(2) .heroImage {
+  object-position: center;
+  --base-y: 7.5%;
+  --base-scale: 1;
+  --flip-x: 1;
+}
+.rightPlaceholder > .imageWrapper:nth-child(3) .heroImage {
+  object-position: center;
+  --base-y: 5.5%;
+  --base-scale: 1;
+  --flip-x: 1;
+}
+.rightPlaceholder > .imageWrapper:nth-child(4) .heroImage {
+  object-position: center;
+  --base-y: 6.65%;
+  --base-scale: 1;
+  --flip-x: -1;
+}
+.rightPlaceholder > .imageWrapper:nth-child(5) .heroImage {
+  object-position: center;
+  --base-y: 7.75%;
+  --base-scale: 1;
+  --flip-x: -1;
+}

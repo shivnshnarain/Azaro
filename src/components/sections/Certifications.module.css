@@ -1,0 +1,126 @@
+.section {
+  background-color: var(--color-white); /* #FCFAF7 background */
+  padding: var(--spacing-section) 0;
+  border-top: 1px solid rgba(51, 87, 101, 0.1);
+}
+
+.headerText {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary-red);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-heading-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.glassCard {
+  background: var(--color-white); /* White cards */
+  border: 1.5px solid var(--color-secondary-bg); /* Green outlines using #F6D6D6 */
+  border-radius: var(--radius-md);
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.glassCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primary-red);
+  box-shadow: 0 20px 40px rgba(51, 87, 101, 0.1); /* Hover animation glow */
+}
+
+/* Glow ring element */
+.glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(51, 87, 101, 0.05) 0%, rgba(51, 87, 101, 0) 70%);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+  pointer-events: none;
+}
+
+.glassCard:hover .glow {
+  opacity: 1;
+}
+
+.iconBox {
+  background-color: rgba(51, 87, 101, 0.06);
+  color: var(--color-primary-red);
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-subtle);
+  margin-bottom: 8px;
+}
+
+.glassCard:hover .iconBox {
+  background-color: var(--color-heading-primary);
+  color: var(--color-white);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-heading-primary);
+}
+
+.cardSubtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #70757A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: -8px;
+}
+
+.desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5F6368;
+}

@@ -1,0 +1,292 @@
+.whySection {
+  background-color: #F5F5F3;
+  /* Soft radial gradient 2-3% opacity (white center fading out) */
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+  padding: 100px 0;
+  border-top: 1px solid rgba(51, 87, 101, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #D71920;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111111;
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+
+.accentLine {
+  width: 45px;
+  height: 3px;
+  background-color: #D71920;
+  border-radius: 2px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+/* Grid System */
+.bentoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bentoBlock {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  /* Min height to ensure the grid items have a nice base size */
+  grid-auto-rows: 240px;
+}
+
+/* Block 1 Layout */
+.featuredLeft {
+  grid-column: span 1;
+  grid-row: span 2;
+  display: flex;
+}
+
+.smallCards2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Block 2 Layout */
+.featuredRight {
+  grid-column: 3 / span 1;
+  grid-row: span 2;
+  display: flex;
+}
+
+.smallCardsStacked {
+  grid-column: 1 / span 2;
+  grid-row: span 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Base Card Styling */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #ECECEC;
+  border-radius: 22px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 250ms ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-color: #F2D2D2;
+}
+
+/* Featured Card Styling */
+.featuredCard {
+  background: linear-gradient(135deg, #E62020 0%, #B81313 100%);
+  border: 1px solid transparent;
+  color: #FFFFFF;
+}
+
+.featuredCard:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 40px rgba(215, 25, 32, 0.2);
+}
+
+/* Custom Image Cards */
+.ergonomicCard, .corporateCard {
+  background: none;
+}
+
+.ergonomicCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    url('/images/why-ergonomic-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: transform 400ms ease-out;
+}
+
+.ergonomicCard:hover::before, .corporateCard:hover::before {
+  transform: scale(1.07);
+}
+
+.corporateCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    url('/images/corporate-projects.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: transform 400ms ease-out, filter 400ms ease-out;
+}
+
+.corporateCard:hover::before {
+  filter: brightness(1.05);
+}
+
+/* Content Layout */
+.cardTop {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: auto; /* pushes text down if needed, or we can use fixed margin */
+}
+
+/* Let the top icon sit at the top, and text sit at the bottom */
+.cardContent {
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Featured cards have content flow differently perhaps, or just aligned to top */
+.featuredCard .cardTop {
+  margin-bottom: 32px;
+}
+.featuredCard .cardContent {
+  margin-top: 0;
+}
+
+/* Typography */
+.cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.featuredCard .cardTitle {
+  color: #FFFFFF;
+  font-size: 28px; /* Slightly larger for featured */
+}
+
+.cardText {
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.6;
+}
+
+.featuredCard .cardText {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.ergonomicCard .cardTitle, .corporateCard .cardTitle {
+  color: #D71920;
+}
+
+.ergonomicCard .cardText, .corporateCard .cardText {
+  color: #444444;
+}
+
+/* Icons */
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF5F5;
+  color: #D71920;
+}
+
+.featuredCard .iconWrapper {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.ergonomicCard .iconWrapper, .corporateCard .iconWrapper {
+  background-color: #FFF3F3;
+  color: #D71920;
+  border: 1px solid #F6D0D0;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .bentoBlock {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featuredLeft, .featuredRight {
+    grid-column: span 2;
+    grid-row: span 1;
+    min-height: 240px;
+  }
+  .smallCards2x2 {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .smallCardsStacked {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .featuredRight {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .bentoBlock {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .smallCards2x2, .smallCardsStacked {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .featuredLeft, .featuredRight {
+    grid-column: span 1;
+  }
+  .smallCards2x2, .smallCardsStacked {
+    grid-column: span 1;
+  }
+}

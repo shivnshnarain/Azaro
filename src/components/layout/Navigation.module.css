@@ -1,0 +1,277 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.scrolled {
+}
+
+.navContainer {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  align-items: center;
+  height: 75px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  transition: height var(--transition-smooth);
+}
+
+.scrolled .navContainer {
+  height: 60px;
+}
+
+.logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logoImage {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary-red);
+  -webkit-mask-image: url('/azaro-logo-red.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+}
+
+.menuList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.menuLink {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #222222;
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+  display: inline-block;
+  transform-origin: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menuLink:hover {
+  color: var(--color-primary-red);
+  transform: scale(1.06);
+}
+
+.activeLink {
+  color: var(--color-primary-red);
+}
+
+.menuLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary-red);
+  transition: width 0.3s ease;
+}
+
+.activeLink::after {
+  width: 100%;
+}
+
+.actions {
+  display: none; /* Removed for minimalist design */
+}
+
+.mobileActions {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.quoteBtnMobile {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background-color: var(--color-primary-red);
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.quoteBtnMobile:hover {
+  background-color: var(--color-hover-red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(51, 87, 101, 0.15);
+}
+
+.mobileToggle {
+  display: none;
+  font-size: 24px;
+  color: var(--color-heading-primary);
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menuList {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: block;
+  }
+
+  .mobileActions {
+    display: flex;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1050;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
+  padding: 120px 40px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebarOpen {
+  right: 0;
+}
+
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 24px;
+}
+
+.sidebarLink {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-heading-primary);
+  transition: color var(--transition-fast);
+}
+
+.sidebarLink:hover {
+  color: var(--color-primary-red);
+}
+
+.sidebarActions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: auto;
+}
+
+.sidebarQuoteBtn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-primary-red);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.sidebarQuoteBtn:hover {
+  background-color: var(--color-hover-red);
+}
+
+.actions {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.cartButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.cartButton:hover {
+  transform: scale(1.1);
+  color: var(--color-primary-red);
+}
+
+.cartBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--color-primary-red);
+  color: #FFF;
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(25%, -25%);
+}
+
+@media (max-width: 1024px) {
+  .actions {
+    display: none !important;
+  }
+}

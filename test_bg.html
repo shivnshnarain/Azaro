@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background-color: #FFFFFF; padding: 50px; }
+  .img-container { display: inline-block; width: 400px; }
+  img { width: 100%; border-radius: 20px; border: 2px solid #D71920; }
+  
+  .multiply { mix-blend-mode: multiply; }
+  .screen { mix-blend-mode: screen; }
+  .darken { mix-blend-mode: darken; }
+  .color-burn { mix-blend-mode: color-burn; }
+  .filter { filter: brightness(1.06) contrast(1.05); }
+  .filter-multiply { filter: brightness(1.06) contrast(1.05); mix-blend-mode: multiply; }
+</style>
+</head>
+<body>
+  <div class="img-container"><img src="public/images/plat101-5-new.png">Original</div>
+  <div class="img-container"><img src="public/images/plat101-5-new.png" class="multiply">Multiply</div>
+  <div class="img-container"><img src="public/images/plat101-5-new.png" class="filter">Filter</div>
+  <div class="img-container"><img src="public/images/plat101-5-new.png" class="filter-multiply">Filter+Multiply</div>
+</body>
+</html>

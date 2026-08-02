@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+:root {
+  /* Premium Modern Red Theme */
+  --color-primary-red: #D1001F;
+  --color-hover-red: #DE0A26;
+  --color-cta-red: #F01E2C;
+  --color-accent-red: #FF2C2C;
+  --color-soft-accent: #F94449;
+  --color-light-accent: #EE6B6E;
+  --color-bg-accent: #F69697;
+  --color-bg-very-light: #FFCBD1;
+  --color-secondary-bg: #FFF8F8;
+  --color-main-bg: #FFFFFF;
+  
+  /* Standard Typography & Neutrals */
+  --color-white: #FFFFFF;
+  --color-black: #111111;
+  --color-heading-primary: #111111;
+  --color-heading-secondary: #D1001F;
+  --color-text-body: #555555;
+  --color-label: #EE6B6E;
+  
+  /* Typography */
+  --font-heading: var(--font-manrope), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  /* Spacing */
+  --spacing-section: 160px;
+  --spacing-section-mobile: 80px;
+
+  /* Animations & Transitions */
+  --transition-bezier: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.5s var(--transition-bezier);
+  --transition-fast: 0.25s var(--transition-bezier);
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 30px rgba(209, 0, 31, 0.05);
+  --shadow-medium: 0 10px 40px rgba(209, 0, 31, 0.08);
+  --shadow-hover: 0 20px 50px rgba(209, 0, 31, 0.15);
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-main-bg);
+  color: var(--color-text-body);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-heading-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-red);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hover-red);
+}
+
+/* Utility Layouts */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* Drifting organic shape slow floating animation */
+@keyframes floatOrganic {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(20px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.organic-float-1 {
+  animation: floatOrganic 12s ease-in-out infinite;
+}
+
+.organic-float-2 {
+  animation: floatOrganic 16s ease-in-out infinite reverse;
+}
+
+.organic-float-3 {
+  animation: floatOrganic 10s ease-in-out infinite;
+}

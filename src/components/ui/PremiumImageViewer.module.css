@@ -1,0 +1,149 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.88);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: crosshair;
+}
+
+.mainImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  pointer-events: auto;
+  will-change: transform;
+  border: 2px solid #C8102E;
+  border-radius: 20px;
+}
+
+/* Premium Magnifying Lens */
+.lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 3px solid #C8102E; /* Premium metallic red border */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+  background-color: rgba(255, 255, 255, 0.02);
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+/* Elegant Handle */
+.lensHandle {
+  position: absolute;
+  top: 85.3%;
+  left: 85.3%;
+  width: 22px;
+  height: 120px; /* Kept exactly the same size as requested */
+  background: linear-gradient(to right, #660000, #C8102E 30%, #8b0000 70%, #4a0000);
+  transform-origin: top center;
+  transform: translate(-50%, -8px) rotate(-45deg);
+  border-radius: 12px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5), inset 2px 2px 5px rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1; /* Behind the lens */
+}
+
+/* Handle Connector */
+.lensHandleConnector {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: 20px;
+  background: linear-gradient(to right, #e0e0e0, #ffffff 30%, #999999 70%, #d4d4d4);
+  border-radius: 12px 12px 4px 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* Handle Logo */
+.lensHandleLogo {
+  width: 90px; /* ~60-70% larger than original, perfectly fits the 120px handle with 5px margins */
+  height: auto;
+  transform: rotate(90deg); /* Correct orientation: top of letters faces right edge (upward) */
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  margin-top: 10px; /* Center it properly within the red handle space */
+}
+
+/* Glass Reflection */
+.lensReflection {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 35%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.15);
+}
+
+.closeButtonTop {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: rgba(25, 25, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}
+
+.closeButtonTop:hover {
+  background-color: #C8102E;
+  border-color: #C8102E;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .controlsBar {
+    bottom: 24px;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  
+  .closeButtonTop {
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mainImage {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}

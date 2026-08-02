@@ -1,0 +1,259 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+
+.popup {
+  background-color: #FFFFFF;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Removed max-height and overflow to allow it to fit natively without scroll */
+}
+
+.header {
+  padding: 24px 24px 16px 24px;
+  border-bottom: 1px solid #E5E7EB;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0 0;
+  font-size: 0.85rem;
+  color: #6B7280;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9CA3AF;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: #F3F4F6;
+  color: #111111;
+}
+
+.body {
+  padding: 20px 24px;
+}
+
+/* Highlighted Product + Colour Section */
+.productHighlightSection {
+  background-color: #FFF5F5;
+  border: 1px solid #FCA5A5;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.highlightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlightColumn:first-child {
+  border-right: 1px solid #FECACA;
+  padding-right: 20px;
+}
+
+.highlightLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.highlightValue {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+.swatchContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.swatchCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 4px #D71920;
+  flex-shrink: 0;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 6px;
+}
+
+.mandatoryStar {
+  color: #DC2626;
+  margin-left: 2px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #111111;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #D71920;
+  box-shadow: 0 0 0 4px rgba(215, 25, 32, 0.1);
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #111111;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #D71920;
+  box-shadow: 0 0 0 4px rgba(215, 25, 32, 0.1);
+}
+
+.footer {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.submitBtn {
+  background-color: #D71920;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submitBtn:hover {
+  background-color: #B9141A;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+.safetyMessage {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6B7280;
+  font-size: 0.85rem;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.col {
+  flex: 1;
+}
+
+.row .formGroup {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .productHighlightSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .highlightColumn:first-child {
+    border-right: none;
+    border-bottom: 1px solid #FECACA;
+    padding-right: 0;
+    padding-bottom: 12px;
+    width: 100%;
+  }
+  
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
