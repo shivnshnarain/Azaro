@@ -457,13 +457,17 @@
 
   .heroWrapper {
     order: 1;
-    height: 400px;
-    min-height: 350px;
+    height: 240px;
+    min-height: auto;
   }
 
   .rightPlaceholder {
     height: 100%;
     margin: 0;
+  }
+
+  .heroImage {
+    --base-scale: 0.85 !important;
   }
 
   .heroHeadline {
