@@ -457,7 +457,7 @@
 
   .heroWrapper {
     order: 1;
-    height: 240px;
+    height: 300px;
     min-height: auto;
   }
 
@@ -466,8 +466,19 @@
     margin: 0;
   }
 
+  .imageWrapper:not(:last-child) {
+    border-right: none !important;
+  }
+
   .heroImage {
-    --base-scale: 0.85 !important;
+    /* Reset scale on mobile to avoid artificial zooming/distortion */
+    --base-scale: 1 !important; 
+  }
+
+  /* Fix for middle image (yellow chair) unwanted artifact on mobile */
+  .rightPlaceholder > .imageWrapper:nth-child(3) .heroImage {
+    object-position: center 25% !important;
+    --base-y: 0% !important;
   }
 
   .heroHeadline {
