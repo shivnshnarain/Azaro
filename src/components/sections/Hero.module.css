@@ -467,7 +467,9 @@
   }
 
   .imageWrapper:not(:last-child) {
+    border: none !important; /* Ensure no borders */
     border-right: none !important;
+    margin-right: -1px !important; /* Force overlap by 1px to prevent sub-pixel rendering gaps */
   }
 
   .heroImage {
