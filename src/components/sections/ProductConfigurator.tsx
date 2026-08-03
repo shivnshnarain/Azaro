@@ -521,7 +521,7 @@ Thank you!`;
           
         <div className={styles.colorsSection} style={{ margin: '0 0 24px 0', width: '100%' }}>
           <div className={styles.sectionHeadingBlack}>AVAILABLE COLOURS</div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <div className={styles.colorsRowWrapper}>
             <div className={styles.thumbnailSelectorsRow} style={{ marginBottom: 0 }}>
               {product.colors.map((color: any) => (
                 <div 
@@ -1581,7 +1581,7 @@ Thank you!`;
           </div>
         )}
 
-        <CustomColorCard onClick={handleContactRequest} style={{ margin: '0 0 24px 0', width: '240px' }} />
+        <CustomColorCard onClick={handleContactRequest} style={{ margin: '0 0 24px 0' }} />
         {/* 8. Purchase Section (REDESIGNED VERTICAL) */}
         <div className={styles.purchaseSection} style={{ width: '100%', margin: 0, flexDirection: 'column', alignItems: 'center' }}>
           <button 
@@ -1708,7 +1708,7 @@ Thank you!`;
         </div>
       )}
 
-      <CustomColorCard onClick={handleContactRequest} style={{ margin: '0 0 24px 0', width: '240px' }} />
+      <CustomColorCard onClick={handleContactRequest} style={{ margin: '0 0 24px 0' }} />
 
       <div className={styles.purchaseSection} style={{ marginTop: 'auto', paddingTop: '16px' }}>
         <button 

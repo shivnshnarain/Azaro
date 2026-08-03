@@ -319,6 +319,13 @@
   flex-wrap: wrap;
 }
 
+.colorsRowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .colorSwatch {
   width: 44px;
   height: 44px;
@@ -417,7 +424,6 @@
 }
 
 .specCard:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
@@ -588,7 +594,7 @@
 }
 
 .premiumHighlightCard:hover {
-  transform: translateY(-6px);
+  /* removed translateY */
 }
 
 .premiumHighlightCard:hover::before {
@@ -698,6 +704,31 @@
   transition: all 0.25s ease;
   min-width: 220px;
   width: 240px;
+}
+
+@media (max-width: 768px) {
+  .customColorNewCard {
+    width: max-content;
+    min-width: 0;
+    padding: 10px 16px;
+  }
+  
+  .colorsRowWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .thumbnailSelectorsRow {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 4px; /* for scrollbar spacing */
+  }
+  
+  .colorSwatch {
+    flex-shrink: 0;
+  }
 }
 
 .customColorNewCard:hover {
