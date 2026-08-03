@@ -101,7 +101,7 @@ Thank you!`;
 
   const handleShare = useCallback(async () => {
     const slug = slugify(product.title);
-    const productUrl = `${window.location.origin}/products/${slug}`;
+    const productUrl = `${window.location.origin}/products?product=${product.id}`;
     const shareData = {
       title: `AZARO | ${product.title}`,
       text: `Check out the premium ${product.title} chair by AZARO.`,
@@ -234,7 +234,7 @@ Thank you!`;
   ), [handleWhatsAppOrder, handleShare, showToast, selectedColor, product, addToCart, showGlobalToast]);
 
   return (
-    <div id={`product-${product.id}`} className={styles.mainProductCard} style={{ scrollMarginTop: '100px' }}>
+    <div id={product.id} className={styles.mainProductCard} style={{ scrollMarginTop: '100px' }}>
       {/* Preload images to avoid delay */}
       <div style={{ display: 'none' }}>
         {product.colors.map((c: any) => <img key={`preload-${c.id}`} src={c.imagePath} alt="preload"  loading="lazy" decoding="async" />)}
@@ -438,7 +438,7 @@ Thank you!`;
 
   const handleShare = async () => {
     const slug = slugify(product.title);
-    const productUrl = `${window.location.origin}/products/${slug}`;
+    const productUrl = `${window.location.origin}/products?product=${product.id}`;
     const shareData = {
       title: `AZARO | ${product.title}`,
       text: `Check out the premium ${product.title} chair by AZARO.`,
@@ -510,7 +510,7 @@ Thank you!`;
   if (isTargetProduct) {
     return (
       <div 
-        id={`product-${product.id}`}
+        id={product.id}
         className={`${styles.directorTargetCard} ${isHighlighted ? styles.premiumHighlightCard : ''}`}
         style={{ scrollMarginTop: '100px' }}
       >
@@ -648,7 +648,7 @@ Thank you!`;
 
   // DEFAULT LAYOUT FOR ALL OTHER PRODUCTS
   return (
-    <div id={`product-${product.id}`} className={`${styles.directorSeriesCard} ${isHighlighted ? styles.premiumHighlightCard : ''}`} style={{ scrollMarginTop: '100px' }}>
+    <div id={product.id} className={`${styles.directorSeriesCard} ${isHighlighted ? styles.premiumHighlightCard : ''}`} style={{ scrollMarginTop: '100px' }}>
       {/* Preload images to avoid delay */}
       {product.colors && (
         <div style={{ display: 'none' }}>
