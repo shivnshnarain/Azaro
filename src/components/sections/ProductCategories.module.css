@@ -194,6 +194,7 @@
   }
   .promoCard {
     grid-column: 1 / -1; /* Spans full width on smaller screens */
+    display: none; /* Hide showcase image completely on Mobile and Tablet */
   }
   .svgIcon, .productImage {
     object-fit: contain;

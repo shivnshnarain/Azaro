@@ -259,7 +259,7 @@
   .featuredLeft, .featuredRight {
     grid-column: span 2;
     grid-row: span 1;
-    min-height: 240px;
+    min-height: 420px; /* Increased to make them wide hero feature cards and avoid cropping */
   }
   .smallCards2x2 {
     grid-column: span 2;
