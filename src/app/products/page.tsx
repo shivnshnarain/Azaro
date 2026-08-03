@@ -1,32 +1,11 @@
-"use client";
+import { Metadata } from 'next';
+import ProductsPageClient from "@/components/layout/ProductsPageClient";
 
-import { useRouter } from "next/navigation";
-import Navigation from "@/components/layout/Navigation";
-import Footer from "@/components/layout/Footer";
-import ProductsCatalogue from "@/components/sections/ProductsCatalogue";
+export const metadata: Metadata = {
+  title: "Products | AZARO",
+  description: "Explore the premium AZARO seating catalogue.",
+};
 
 export default function ProductsPage() {
-  const router = useRouter();
-
-  const handleFooterLinkClick = (sectionId: string) => {
-    if (sectionId === "products") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (sectionId === "home") {
-      router.push("/");
-    } else {
-      router.push(`/#${sectionId}`);
-    }
-  };
-
-  return (
-    <>
-      <Navigation />
-      
-      <main style={{ minHeight: "100vh", backgroundColor: "#FFFFFF", paddingTop: "75px" }}>
-        <ProductsCatalogue />
-      </main>
-
-      <Footer onLinkClick={handleFooterLinkClick} />
-    </>
-  );
+  return <ProductsPageClient />;
 }
