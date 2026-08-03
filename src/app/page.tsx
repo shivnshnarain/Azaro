@@ -160,7 +160,22 @@ export default function Home() {
         />
 
         <div style={{ position: "relative", zIndex: 10, backgroundColor: "#FFFFFF" }}>
-          <ProductCategories onCategorySelect={(id) => router.push("/products")} />
+          <ProductCategories onCategorySelect={(id) => {
+            const productMapping: Record<string, string> = {
+              executive: "platinum-101",
+              director: "platinum-101",
+              mesh: "stylize-149",
+              workstation: "georgia-164",
+              cafe: "genoa-169",
+              conference: "pyramid-127",
+            };
+            const targetId = productMapping[id];
+            if (targetId) {
+              router.push(`/products#${targetId}`);
+            } else {
+              router.push("/products");
+            }
+          }} />
           <WhyAzaro />
           <About />
           <Certifications />

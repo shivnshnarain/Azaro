@@ -22,7 +22,14 @@ function ProductsPageContent() {
       const timer = setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headerOffset = 100; // Account for 75px navbar + 25px breathing room
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
           
           // Optional highlight effect
           const originalTransition = element.style.transition;
