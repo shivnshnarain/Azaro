@@ -500,17 +500,19 @@ Thank you!`;
       
       {/* LEFT COLUMN (45%) */}
       <div className={styles.leftColumn}>
-        {product.discount && (
-          <div className={styles.discountBadge}>
-            <span className={styles.discountBadgePercent}>{product.discount}%</span>
-            <span className={styles.discountBadgeText}>OFF</span>
-          </div>
-        )}
-        <InteractiveViewer 
-          staticImage={selectedColor.imagePath}
-          alt={`${product.title} Chair`}
-          className={styles.productImage}
-        />
+        <div className={styles.productImageWrapper}>
+          {product.discount && (
+            <div className={styles.discountBadge}>
+              <span className={styles.discountBadgePercent}>{product.discount}%</span>
+              <span className={styles.discountBadgeText}>OFF</span>
+            </div>
+          )}
+          <InteractiveViewer 
+            staticImage={selectedColor.imagePath}
+            alt={`${product.title} Chair`}
+            className={styles.productImage}
+          />
+        </div>
       </div>
 
       {/* RIGHT COLUMN (55%) */}

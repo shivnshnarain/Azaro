@@ -41,11 +41,22 @@
   align-items: center;
 }
 
+.productImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 998 / 1095;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .productImage {
   position: relative;
   width: 100%; 
   max-width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 998 / 1095;
   display: block;
   margin: 0;
@@ -133,9 +144,10 @@
 }
 
 .discountBadge {
+  --badge-offset: 20px;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: var(--badge-offset);
+  right: var(--badge-offset);
   width: 56px;
   height: 56px;
   background-color: #C62828;
@@ -152,8 +164,7 @@
 
 @media (min-width: 1025px) {
   .discountBadge {
-    top: 40px;
-    right: 40px;
+    --badge-offset: 24px;
   }
 }
 
