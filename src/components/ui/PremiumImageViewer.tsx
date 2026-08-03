@@ -229,10 +229,8 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
                 />
               </motion.div>
             ) : (
-              <motion.img
-                ref={imageRef}
-                src={imageSrc}
-                alt={alt}
+              <motion.div
+                ref={imageRef as any}
                 className={styles.mainImage}
                 drag={zoom > 1}
                 dragConstraints={containerRef}
@@ -241,11 +239,26 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 style={{ 
                   cursor: zoom > 1 ? "grab" : "zoom-in",
-                  touchAction: zoom > 1 ? "none" : "auto"
+                  touchAction: zoom > 1 ? "none" : "auto",
+                  position: "relative",
+                  display: "inline-block"
                 }}
                 whileDrag={{ cursor: "grabbing" }}
-                draggable={false}
-              />
+              >
+                <img 
+                  src={imageSrc} 
+                  alt={alt}
+                  style={{ 
+                    display: "block",
+                    maxWidth: "90vw", 
+                    maxHeight: "90vh", 
+                    width: "auto", 
+                    height: "auto", 
+                    pointerEvents: "none" 
+                  }}
+                  draggable={false}
+                />
+              </motion.div>
             )}
 
             {/* Premium Magnifying Lens - Only visible when zoom == 1 and hovering */}

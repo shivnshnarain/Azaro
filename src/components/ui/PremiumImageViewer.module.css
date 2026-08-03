@@ -35,6 +35,23 @@
   border-radius: 20px;
 }
 
+.mainImage::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 45%;
+  background-image: url('/azaro-logo-red.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* Premium Magnifying Lens */
 .lens {
   position: absolute;
