@@ -585,8 +585,8 @@
   align-items: center;
   margin-bottom: 24px;
   background-color: #FFFFFF;
-  border-radius: 22px;
   border: 2px solid #D71920;
+  border-radius: 22px;
   overflow: hidden;
 }
 
