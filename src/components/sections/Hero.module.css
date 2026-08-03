@@ -438,14 +438,14 @@
   .hero {
     flex-direction: column;
     height: auto;
-    min-height: 100vh;
+    min-height: auto;
   }
 
   .heroContentBlock {
     position: relative;
     top: 0;
     order: 2;
-    padding: 40px 20px 60px;
+    padding: 40px 20px 24px;
     background: var(--color-white, #ffffff);
     margin-top: 0;
   }
