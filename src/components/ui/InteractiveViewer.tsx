@@ -42,6 +42,23 @@ export default function InteractiveViewer({
   
   // Premium Image Viewer State
   const [isPremiumViewerOpen, setIsPremiumViewerOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  const handleZoomClick = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (isDesktop) {
+      setIsPremiumViewerOpen(true);
+    }
+  };
 
   // Preload Image Sequence if provided
   useEffect(() => {
@@ -145,8 +162,8 @@ export default function InteractiveViewer({
         
         {/* Open Viewer Button / Area */}
         <button 
-          style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.8)", border: "none", borderRadius: "50%", width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 10, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
-          onClick={(e) => { e.stopPropagation(); setIsPremiumViewerOpen(true); }}
+          style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.8)", border: "none", borderRadius: "50%", width: 36, height: 36, display: isDesktop ? "flex" : "none", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 10, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
+          onClick={handleZoomClick}
           title="Fullscreen View"
         >
           <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
@@ -167,8 +184,8 @@ export default function InteractiveViewer({
     return (
       <div 
         className={className} 
-        style={{ cursor: "zoom-in", position: "relative" }}
-        onClick={() => setIsPremiumViewerOpen(true)}
+        style={{ cursor: isDesktop ? "zoom-in" : "default", position: "relative" }}
+        onClick={handleZoomClick}
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -224,8 +241,8 @@ export default function InteractiveViewer({
     <>
       <div 
         className={className} 
-        style={{ cursor: "zoom-in", position: "relative" }}
-        onClick={() => setIsPremiumViewerOpen(true)}
+        style={{ cursor: isDesktop ? "zoom-in" : "default", position: "relative" }}
+        onClick={handleZoomClick}
       >
         <img
           src={staticImage}

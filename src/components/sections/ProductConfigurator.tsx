@@ -1414,9 +1414,26 @@ export const DirectorCard = memo(function DirectorCard({ product }: { product: a
   const [showToast, setShowToast] = useState(false);
   const [isEnquiryPopupOpen, setIsEnquiryPopupOpen] = useState(false);
   const [isPremiumViewerOpen, setIsPremiumViewerOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const { addToCart, showToast: showGlobalToast } = useCart();
   
   const currentImagePath = selectedColor ? selectedColor.imagePath : product.imagePath;
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  const handleZoomClick = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (isDesktop) {
+      setIsPremiumViewerOpen(true);
+    }
+  };
 
   const handleContactRequest = () => {
     const message = `Hello AZARO Team! 👋
@@ -1545,8 +1562,8 @@ Thank you!`;
             className={styles.directorSeriesImage} 
             loading="lazy" 
             decoding="async"
-            style={{ cursor: "zoom-in" }}
-            onClick={() => setIsPremiumViewerOpen(true)}
+            style={{ cursor: isDesktop ? "zoom-in" : "default" }}
+            onClick={handleZoomClick}
           />
         </div>
 
@@ -1675,8 +1692,8 @@ Thank you!`;
           className={styles.directorSeriesImage} 
           loading="lazy" 
           decoding="async" 
-          style={{ cursor: "zoom-in" }}
-          onClick={() => setIsPremiumViewerOpen(true)}
+          style={{ cursor: isDesktop ? "zoom-in" : "default" }}
+          onClick={handleZoomClick}
         />
       </div>
       <div className={styles.headerTopRow}>
