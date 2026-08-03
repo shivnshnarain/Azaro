@@ -4,6 +4,7 @@ import { PRODUCTS_DATA, DIRECTOR_PRODUCTS, PEARL_112_DATA, CROWN_122_DATA, DYNAM
 import React, { useState, useEffect, useMemo, useCallback, memo, useRef } from "react";
 import { Award, Armchair, Settings, Palette, Plus, Shield, ShoppingBag, Share2, Check, ShoppingCart, Paintbrush, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { slugify } from "@/lib/slugify";
 import InteractiveViewer from "../ui/InteractiveViewer";
 import styles from "./ProductConfigurator.module.css";
 import { useCart } from "@/context/CartContext";
@@ -99,7 +100,8 @@ Thank you!`;
   }, []);
 
   const handleShare = useCallback(async () => {
-    const productUrl = `${window.location.origin}/products/${product.id}`;
+    const slug = slugify(product.title);
+    const productUrl = `${window.location.origin}/products/${slug}`;
     const shareData = {
       title: `AZARO | ${product.title}`,
       text: `Check out the premium ${product.title} chair by AZARO.`,
@@ -435,7 +437,8 @@ Thank you!`;
   };
 
   const handleShare = async () => {
-    const productUrl = `${window.location.origin}/products/${product.id}`;
+    const slug = slugify(product.title);
+    const productUrl = `${window.location.origin}/products/${slug}`;
     const shareData = {
       title: `AZARO | ${product.title}`,
       text: `Check out the premium ${product.title} chair by AZARO.`,

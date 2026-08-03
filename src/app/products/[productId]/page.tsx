@@ -1,17 +1,19 @@
 import { Metadata } from 'next';
 import { getAllProducts } from '@/lib/getAllProducts';
-import ProductsPageClient from "@/components/layout/ProductsPageClient";
+import { slugify } from '@/lib/slugify';
+import SingleProductPageClient from "@/components/layout/SingleProductPageClient";
 
 export async function generateStaticParams() {
   const products = getAllProducts();
   return products.map((product) => ({
-    productId: product.id,
+    productId: slugify(product.title),
   }));
 }
 
-export async function generateMetadata({ params }: { params: { productId: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ productId: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
   const products = getAllProducts();
-  const product = products.find((p) => p.id === params.productId);
+  const product = products.find((p) => slugify(p.title) === resolvedParams.productId);
 
   if (!product) {
     return {
@@ -22,6 +24,7 @@ export async function generateMetadata({ params }: { params: { productId: string
   // Find the showcase image, handling potential variants
   const p = product as any;
   const imageUrl = p.imagePath || (p.colors && p.colors[0]?.imagePath) || "";
+  const slug = slugify(product.title);
 
   return {
     title: `${product.title} | AZARO`,
@@ -29,7 +32,7 @@ export async function generateMetadata({ params }: { params: { productId: string
     openGraph: {
       title: `${product.title} | AZARO`,
       description: p.description || `Discover the ${product.title} by AZARO. Premium luxury seating with ergonomic design.`,
-      url: `https://azaro-azure.vercel.app/products/${product.id}`,
+      url: `https://azaro-azure.vercel.app/products/${slug}`,
       images: [
         {
           url: imageUrl,
@@ -46,16 +49,15 @@ export async function generateMetadata({ params }: { params: { productId: string
       images: [imageUrl],
     },
     alternates: {
-      canonical: `https://azaro-azure.vercel.app/products/${product.id}`,
+      canonical: `https://azaro-azure.vercel.app/products/${slug}`,
     },
   };
 }
 
-import SingleProductPageClient from "@/components/layout/SingleProductPageClient";
-
-export default function ProductDeepLinkPage({ params }: { params: { productId: string } }) {
+export default async function ProductDeepLinkPage({ params }: { params: Promise<{ productId: string }> }) {
+  const resolvedParams = await params;
   const products = getAllProducts();
-  const product = products.find((p) => p.id === params.productId);
+  const product = products.find((p) => slugify(p.title) === resolvedParams.productId);
   
   if (!product) {
     return <div>Product not found</div>;
