@@ -70,55 +70,61 @@ export default function About() {
           
           <div className={styles.visionMissionGrid}>
             <motion.div
-              className={styles.infoCard}
+              className={styles.infoCardWrapper}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
-              <div className={styles.cardAccent} />
-              <h3 className={styles.cardTitle}>Our Vision</h3>
-              <p className={styles.cardText}>
-                Setting the global standard for executive workspaces by fusing ergonomic mastery with luxury aesthetics.
-              </p>
+              <div className={styles.infoCard}>
+                <div className={styles.cardAccent} />
+                <h3 className={styles.cardTitle}>Our Vision</h3>
+                <p className={styles.cardText}>
+                  Setting the global standard for executive workspaces by fusing ergonomic mastery with luxury aesthetics.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
-              className={styles.infoCard}
+              className={styles.infoCardWrapper}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className={styles.cardAccent} />
-              <h3 className={styles.cardTitle}>Our Mission</h3>
-              <p className={styles.cardText}>
-                Crafting premium, sustainable furniture that perfectly protects posture and continuously drives professional success.
-              </p>
+              <div className={styles.infoCard}>
+                <div className={styles.cardAccent} />
+                <h3 className={styles.cardTitle}>Our Mission</h3>
+                <p className={styles.cardText}>
+                  Crafting premium, sustainable furniture that perfectly protects posture and continuously drives professional success.
+                </p>
+              </div>
             </motion.div>
           </div>
 
           <motion.div
-            className={styles.infoCard}
+            className={styles.infoCardWrapper}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className={styles.cardTitle} style={{ marginBottom: "24px" }}>The Journey</h3>
-            <div className={styles.timeline}>
-              {timelineItems.map((item, idx) => (
-                <div key={idx} className={styles.timelineItem}>
-                  <div className={styles.timelineConnector} />
-                  <div className={styles.timelineDot} />
-                  
-                  <div className={styles.timelineContent}>
-                    <div className={styles.timelineYear}>{item.year}</div>
-                    <h4 className={styles.timelineTitle}>{item.title}</h4>
-                    <p className={styles.timelineDesc}>{item.desc}</p>
+            <div className={styles.infoCard}>
+              <h3 className={styles.cardTitle} style={{ marginBottom: "24px" }}>The Journey</h3>
+              <div className={styles.timeline}>
+                {timelineItems.map((item, idx) => (
+                  <div key={idx} className={styles.timelineItem}>
+                    <div className={styles.timelineConnector} />
+                    <div className={styles.timelineDot} />
+                    
+                    <div className={styles.timelineContent}>
+                      <div className={styles.timelineYear}>{item.year}</div>
+                      <h4 className={styles.timelineTitle}>{item.title}</h4>
+                      <p className={styles.timelineDesc}>{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </motion.div>
 

@@ -24,6 +24,9 @@
   flex-direction: column;
   position: sticky;
   top: 120px;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .tagline {
@@ -76,6 +79,14 @@
   gap: 30px;
   position: relative;
   z-index: 10;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.infoCardWrapper {
+  height: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .visionMissionGrid {
@@ -91,16 +102,20 @@
 }
 
 .infoCard {
-  background-color: #FFFFFF;
+  background-color: #FFFFFF !important;
   padding: 40px 32px;
   border-radius: 20px;
   border: 1.5px solid var(--color-primary-red);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
-  z-index: 2;
+  z-index: 20;
   isolation: isolate;
   transition: box-shadow 0.3s ease;
   height: 100%;
+  transform: translate3d(0, 0, 1px);
+  -webkit-transform: translate3d(0, 0, 1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .infoCard:hover {
