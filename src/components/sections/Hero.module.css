@@ -491,12 +491,12 @@
   }
 
   .headingLine1 {
-    font-size: clamp(20px, 6.5vw, 32px);
+    font-size: clamp(24px, 7.8vw, 38px);
     white-space: nowrap;
   }
 
   .headingLine2 {
-    font-size: clamp(32px, 10vw, 55px);
+    font-size: clamp(27px, 8.5vw, 47px);
     margin-top: 5px;
   }
 
