@@ -74,6 +74,8 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  position: relative;
+  z-index: 10;
 }
 
 .visionMissionGrid {
@@ -95,6 +97,8 @@
   border: 1.5px solid var(--color-primary-red);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
+  z-index: 2;
+  isolation: isolate;
   transition: box-shadow 0.3s ease;
   height: 100%;
 }
