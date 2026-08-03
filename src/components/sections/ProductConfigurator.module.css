@@ -315,8 +315,9 @@
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-bottom: 16px;
   flex-wrap: wrap;
+  padding: 8px;
+  margin: -8px -8px 8px -8px; /* Original margin-bottom was 16px, subtract 8px padding */
 }
 
 .colorsRowWrapper {
@@ -722,8 +723,9 @@
   .thumbnailSelectorsRow {
     flex-wrap: nowrap;
     overflow-x: auto;
-    width: 100%;
-    padding-bottom: 4px; /* for scrollbar spacing */
+    width: auto;
+    align-self: stretch;
+    padding-bottom: 12px; /* 8px padding + 4px for scrollbar spacing */
   }
   
   .colorSwatch {

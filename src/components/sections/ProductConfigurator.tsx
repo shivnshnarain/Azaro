@@ -522,7 +522,7 @@ Thank you!`;
         <div className={styles.colorsSection} style={{ margin: '0 0 24px 0', width: '100%' }}>
           <div className={styles.sectionHeadingBlack}>AVAILABLE COLOURS</div>
           <div className={styles.colorsRowWrapper}>
-            <div className={styles.thumbnailSelectorsRow} style={{ marginBottom: 0 }}>
+            <div className={styles.thumbnailSelectorsRow} style={{ marginBottom: '-8px' }}>
               {product.colors.map((color: any) => (
                 <div 
                   key={`swatch-${color.id}`}
@@ -1584,7 +1584,7 @@ Thank you!`;
         {product.colors && (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: 0, width: '100%' }}>
             <div className={styles.sectionHeadingBlack} style={{ margin: 0 }}>AVAILABLE COLOURS</div>
-            <div className={styles.thumbnailSelectorsRow} style={{ margin: 0, justifyContent: 'center' }}>
+            <div className={styles.thumbnailSelectorsRow} style={{ margin: '-8px', justifyContent: 'center' }}>
               {product.colors.map((color: any) => (
                 <div 
                   key={`swatch-${color.id}`}
