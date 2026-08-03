@@ -1529,13 +1529,7 @@ Thank you!`;
         {/* 1. Product Image */}
         <div 
           className={styles.directorSeriesImageWrapper} 
-          style={
-            isHighlighted ? {
-              marginBottom: 0,
-              border: '2px solid #D71920',
-              borderRadius: '22px'
-            } : { marginBottom: 0 }
-          }
+          style={{ marginBottom: 0 }}
         >
           {product.discount && (
             <div className={styles.discountBadge}>
