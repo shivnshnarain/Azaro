@@ -228,22 +228,6 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Clean neutral outer shadow */
 }
 
-.imageWrapper::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45%;
-  height: 45%;
-  background-image: url('/azaro-logo-red.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 5;
-}
 
 .heroImage {
   height: 100%;

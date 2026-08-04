@@ -33,6 +33,7 @@
   will-change: transform;
   border: 2px solid #C8102E;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .mainImage::after {
