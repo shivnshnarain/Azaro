@@ -55,9 +55,7 @@ export default function InteractiveViewer({
 
   const handleZoomClick = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (isDesktop) {
-      setIsPremiumViewerOpen(true);
-    }
+    setIsPremiumViewerOpen(true);
   };
 
   // Preload Image Sequence if provided
@@ -162,7 +160,7 @@ export default function InteractiveViewer({
         
         {/* Open Viewer Button / Area */}
         <button 
-          style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.8)", border: "none", borderRadius: "50%", width: 36, height: 36, display: isDesktop ? "flex" : "none", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 10, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
+          style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.8)", border: "none", borderRadius: "50%", width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 10, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
           onClick={handleZoomClick}
           title="Fullscreen View"
         >

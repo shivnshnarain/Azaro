@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import styles from "./PremiumImageViewer.module.css";
 
@@ -22,8 +22,6 @@ const MAGNIFIER_POWER = 1.9; // 1.9x zoom relative to the image size on screen
 
 export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, customOverlayHex }: PremiumImageViewerProps) {
   const [zoom, setZoom] = useState(1);
-  const [isHovering, setIsHovering] = useState(false);
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -31,21 +29,10 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
   const initialPinchDistance = useRef<number | null>(null);
   const initialPinchZoom = useRef<number>(1);
 
-  // Framer Motion values for magnifier lens
-  const cursorX = useMotionValue(-1000);
-  const cursorY = useMotionValue(-1000);
-
-  // Motion values for background position of the lens
-  const bgPosX = useMotionValue(0);
-  const bgPosY = useMotionValue(0);
-  
-  const bgPosition = useMotionTemplate`${bgPosX}% ${bgPosY}%`;
-
   // Reset state when closed
   useEffect(() => {
     if (!isOpen) {
       setZoom(1);
-      setIsHovering(false);
     } else {
       document.body.style.overflow = "hidden";
     }
@@ -82,43 +69,6 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
     }
   };
 
-  // Magnifier mechanics
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (zoom > 1 || !imageRef.current || !containerRef.current) return;
-    
-    // Only show lens on desktop (detect pointer type ideally, but rely on hover state)
-    const rect = imageRef.current.getBoundingClientRect();
-    
-    // Calculate mouse position relative to image bounds
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // Ensure mouse is inside the image bounds
-    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-      if (!isHovering) setIsHovering(true);
-      if (imageSize.width !== rect.width || imageSize.height !== rect.height) {
-        setImageSize({ width: rect.width, height: rect.height });
-      }
-      
-      // Update lens physical position (centered on cursor)
-      cursorX.set(e.clientX - LENS_SIZE / 2);
-      cursorY.set(e.clientY - LENS_SIZE / 2);
-
-      // Update the background position for the magnified image
-      // We calculate percentage of X and Y
-      const percentX = (x / rect.width) * 100;
-      const percentY = (y / rect.height) * 100;
-      
-      bgPosX.set(percentX);
-      bgPosY.set(percentY);
-    } else {
-      setIsHovering(false);
-    }
-  }, [zoom, cursorX, cursorY, bgPosX, bgPosY]);
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
 
   // Mobile Pinch to Zoom
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -171,8 +121,6 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
             className={styles.imageContainer}
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the container
             onWheel={handleWheel}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -188,7 +136,7 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
                 animate={{ scale: zoom, x: zoom === 1 ? 0 : undefined, y: zoom === 1 ? 0 : undefined }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 style={{ 
-                  cursor: zoom > 1 ? "grab" : "zoom-in",
+                  cursor: zoom > 1 ? "grab" : "default",
                   touchAction: zoom > 1 ? "none" : "auto",
                   position: "relative",
                   display: "inline-block"
@@ -238,7 +186,7 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
                 animate={{ scale: zoom, x: zoom === 1 ? 0 : undefined, y: zoom === 1 ? 0 : undefined }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 style={{ 
-                  cursor: zoom > 1 ? "grab" : "zoom-in",
+                  cursor: zoom > 1 ? "grab" : "default",
                   touchAction: zoom > 1 ? "none" : "auto",
                   position: "relative",
                   display: "inline-block"
@@ -261,61 +209,6 @@ export default function PremiumImageViewer({ isOpen, onClose, imageSrc, alt, cus
               </motion.div>
             )}
 
-            {/* Premium Magnifying Lens - Only visible when zoom == 1 and hovering */}
-            <AnimatePresence>
-              {isHovering && zoom === 1 && (
-                <motion.div
-                  className={styles.lens}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    x: cursorX,
-                    y: cursorY,
-                    width: LENS_SIZE,
-                    height: LENS_SIZE,
-                  }}
-                >
-                  {/* Base Image in Lens */}
-                  <motion.div style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: "50%",
-                    backgroundImage: `url("${customOverlayHex ? "/images/white-chair-master.png" : imageSrc}")`,
-                    backgroundSize: imageSize.width ? `${imageSize.width * MAGNIFIER_POWER}px ${imageSize.height * MAGNIFIER_POWER}px` : `${MAGNIFIER_POWER * 100}%`,
-                    backgroundPosition: bgPosition,
-                  }} />
-                  {/* Tint Overlay in Lens */}
-                  {customOverlayHex && (
-                    <motion.div style={{
-                      position: "absolute",
-                      inset: 0,
-                      borderRadius: "50%",
-                      backgroundColor: customOverlayHex,
-                      mixBlendMode: "multiply",
-                      WebkitMaskImage: 'url("/images/leather-mask.png")',
-                      WebkitMaskSize: imageSize.width ? `${imageSize.width * MAGNIFIER_POWER}px ${imageSize.height * MAGNIFIER_POWER}px` : `${MAGNIFIER_POWER * 100}%`,
-                      WebkitMaskRepeat: "no-repeat",
-                      WebkitMaskPosition: bgPosition as any,
-                      maskImage: 'url("/images/leather-mask.png")',
-                      maskSize: imageSize.width ? `${imageSize.width * MAGNIFIER_POWER}px ${imageSize.height * MAGNIFIER_POWER}px` : `${MAGNIFIER_POWER * 100}%`,
-                      maskRepeat: "no-repeat",
-                      maskPosition: bgPosition as any,
-                    }} />
-                  )}
-                  
-                  {/* Glass Reflection Overlay */}
-                  <div className={styles.lensReflection} />
-
-                  {/* Magnifier Handle */}
-                  <div className={styles.lensHandle}>
-                    <div className={styles.lensHandleConnector} />
-                    <img src="/azaro-logo.png" alt="Azaro Logo" className={styles.lensHandleLogo} />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </motion.div>
       )}
