@@ -639,8 +639,7 @@
 }
 
 .productImageWrapper::after,
-.directorSeriesImageWrapper::after,
-.uploadedImageContainer::after {
+.directorSeriesImageWrapper::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -652,7 +651,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.18;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 5;
 }
