@@ -51,43 +51,27 @@ export default function Contact({ enquirySubject }: ContactProps) {
             </div>
 
             <div className={styles.infoList}>
-              {/* Phone Card */}
-              <div className={styles.infoCard}>
-                <div className={styles.iconWrapper}>
-                  <Phone size={24} />
+              <div className={styles.contactRow}>
+                {/* Phone Card */}
+                <div className={styles.infoCard}>
+                  <div className={styles.iconWrapper}>
+                    <Phone size={24} />
+                  </div>
+                  <div className={styles.infoDetails}>
+                    <h3 className={styles.infoHeading}>Phone</h3>
+                    <a href="tel:+919412367715" className={styles.infoText}>+91 9412367715</a>
+                  </div>
                 </div>
-                <div className={styles.infoDetails}>
-                  <h3 className={styles.infoHeading}>Phone</h3>
-                  <a href="tel:+919412367715" className={styles.infoText}>+91 9412367715</a>
-                </div>
-              </div>
 
-              {/* WhatsApp Card */}
-              <div className={styles.infoCard}>
-                <div className={styles.iconWrapper}>
-                  <MessageSquare size={24} />
-                </div>
-                <div className={styles.infoDetails}>
-                  <h3 className={styles.infoHeading}>WhatsApp</h3>
-                  <a
-                    href="https://wa.me/9198100XXXXX"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.infoText}
-                  >
-                    Message on WhatsApp
-                  </a>
-                </div>
-              </div>
-
-              {/* Email Card */}
-              <div className={styles.infoCard}>
-                <div className={styles.iconWrapper}>
-                  <Mail size={24} />
-                </div>
-                <div className={styles.infoDetails}>
-                  <h3 className={styles.infoHeading}>Email</h3>
-                  <a href="mailto:manjulagarwal4@gmail.com" className={styles.infoText}>manjulagarwal4@gmail.com</a>
+                {/* Email Card */}
+                <div className={styles.infoCard}>
+                  <div className={styles.iconWrapper}>
+                    <Mail size={24} />
+                  </div>
+                  <div className={styles.infoDetails}>
+                    <h3 className={styles.infoHeading}>Email</h3>
+                    <a href="mailto:manjulagarwal4@gmail.com" className={styles.infoText}>manjulagarwal4@gmail.com</a>
+                  </div>
                 </div>
               </div>
 
@@ -100,11 +84,27 @@ export default function Contact({ enquirySubject }: ContactProps) {
                   <h3 className={styles.infoHeading}>ADDRESS</h3>
                   <div className={styles.infoText} style={{ lineHeight: "1.6" }}>
                     Old Rampur Road<br />
-                    Govind Veer Shah Hazara<br />
+                    Govind Veer Shah Hazarai<br />
                     Katghar Railway Station Road<br />
-                    Moradabad
+                    Moradabad<br />
+                    UP
                   </div>
                 </div>
+              </div>
+
+              {/* Map Card */}
+              <div className={styles.mapCard}>
+                <iframe
+                  src="https://maps.google.com/maps?q=28.8222450,78.7896650&z=15&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="AZARO Location Map"
+                  className={styles.mapIframe}
+                ></iframe>
               </div>
             </div>
           </div>
