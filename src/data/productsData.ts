@@ -691,9 +691,7 @@ export const STYLIZE_149_DATA = {
   ],
   colors: [
     { id: "stylize149-var1", name: "Black Mesh", hex: "#111111", imagePath: "/images/stylize-149-1.png" },
-    { id: "stylize149-var2", name: "Grey Mesh", hex: "#888888", imagePath: "/images/stylize-149-2.png" },
-    { id: "stylize149-var3", name: "White Mesh", hex: "#EAEAEA", imagePath: "/images/stylize-149-3.png" },
-    { id: "stylize149-var4", name: "Blue Mesh", hex: "#2A4B7C", imagePath: "/images/stylize-149-4.png" },
+    { id: "stylize149-var2", name: "Grey Mesh", hex: "#888888", imagePath: "/images/stylize-149-2-new.png" },
   ]
 };
 
@@ -786,9 +784,9 @@ export const GALLIO_155_DATA = {
   discount: 20,
   series: 'MESH SERIES',
   description: 'GALLIO 155 is a premium office seating solution crafted for executive comfort and timeless aesthetics. Featuring elegant design, ergonomic support, and high-quality materials, it is ideal for leadership spaces and professional environments.',
-  imagePath: "/images/gallio155-1.png",
+  imagePath: "/images/gallio155-1-new.png",
   colors: [
-    { id: "gallio155-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/gallio155-1.png" },
+    { id: "gallio155-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/gallio155-1-new.png" },
     { id: "gallio155-var2", name: "Variant 2", hex: "#888888", imagePath: "/images/gallio155-2.png" }
   ]
 };
@@ -816,9 +814,9 @@ export const ADMIRE_157_DATA = {
   discount: 20,
   series: 'MESH SERIES',
   description: 'ADMIRE 157 is a premium office seating solution crafted for executive comfort and timeless aesthetics. Featuring elegant design, ergonomic support, and high-quality materials, it is ideal for leadership spaces and professional environments.',
-  imagePath: "/images/admire157-1.png",
+  imagePath: "/images/admire157-1-new.png",
   colors: [
-    { id: "admire157-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/admire157-1.png" },
+    { id: "admire157-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/admire157-1-new.png" },
     { id: "admire157-var2", name: "Variant 2", hex: "#888888", imagePath: "/images/admire157-2.png" }
   ]
 };
@@ -832,7 +830,6 @@ export const STELLE_158_DATA = {
   discount: 20,
   description: "Designed for contemporary workspaces, STELLE 158 combines refined ergonomics, breathable comfort, and modern aesthetics. Engineered for long working hours with premium craftsmanship and reliable everyday performance.",
   colors: [
-    { id: "stelle158-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/stelle158-1.png" },
     { id: "stelle158-var2", name: "Variant 2", hex: "#888888", imagePath: "/images/stelle158-2.png" },
     { id: "stelle158-var3", name: "Variant 3", hex: "#EAEAEA", imagePath: "/images/stelle158-3.png" },
   ]
