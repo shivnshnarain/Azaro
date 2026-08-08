@@ -915,6 +915,7 @@ export const ULTIMA_162_DATA = {
   description: "ULTIMA 162 delivers unparalleled ergonomic comfort for the contemporary workspace. Its breathable seating and premium materials ensure exceptional daily durability, keeping you focused and productive for hours.",
   colors: [
     { id: "ultima162-var1", name: "Variant 1", hex: "#111111", imagePath: "/images/ultima162-1.png" },
+    { id: "ultima162-var2", name: "Variant 2", hex: "#888888", imagePath: "/images/ultima162-2.png" },
   ]
 };
 
