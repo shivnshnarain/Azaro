@@ -38,7 +38,7 @@ export const PRODUCTS_DATA = [
     colors: [
       { id: "sun132-var1", name: "Colour Option 1", hex: "#000000", imagePath: "/images/sun132-1.png" },
       { id: "sun132-var2", name: "Colour Option 2", hex: "#000000", imagePath: "/images/sun132-2.png" },
-      { id: "sun132-var3", name: "Colour Option 3", hex: "#000000", imagePath: "/images/sun132-3.png" },
+      { id: "sun132-var3", name: "Colour Option 3", hex: "#000000", imagePath: "/images/sun132-3-new.png" },
       { id: "sun132-var4", name: "Colour Option 4", hex: "#000000", imagePath: "/images/sun132-4.png" },
     ]
   },
